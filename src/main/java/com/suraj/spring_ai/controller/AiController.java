@@ -13,8 +13,10 @@ public class AiController {
     @Autowired
     private ChatClient chatClient;
 
+    // localhost:8080/prompt?message=<Query_TO_Search>
     @GetMapping("/prompt")
     public  String prompt(@RequestParam String message){
+        //this calls gemini configured in application.properties
         ChatClient.CallResponseSpec explainAboutPune = chatClient.prompt()
                 .user(message)
                 .call();
@@ -24,3 +26,4 @@ public class AiController {
 
 
 }
+
